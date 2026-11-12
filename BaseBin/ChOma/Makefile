@@ -60,7 +60,9 @@ CHOMA_HEADERS_DST_DIR := $(HEADER_OUTPUT_DIR)/choma
 
 CHOMA_HEADERS := $(shell find $(CHOMA_HEADERS_SRC_DIR) -type f -name "*.h")
 
-all: $(STATIC_LIB) $(DYNAMIC_LIB) copy-choma-headers clean-test $(TESTS_BINARIES)
+all: copy-choma-headers $(STATIC_LIB) $(DYNAMIC_LIB) clean-test $(TESTS_BINARIES)
+
+$(OBJ_FILES): | copy-choma-headers
 
 $(STATIC_LIB): $(OBJ_FILES)
 	@mkdir -p $(LIB_DIR)
