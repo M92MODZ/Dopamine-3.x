@@ -84,6 +84,7 @@ jobs:
           export LDFLAGS="$LDFLAGS -L$(brew --prefix openssl)/lib -arch arm64"
           gmake -j$(sysctl -n hw.logicalcpu) OPENSSL=1
           sudo cp trustcache /opt/procursus/bin/
+          sudo cp trustcache /usr/local/bin/
 
       - name: Set Environment Variables
         run: |
