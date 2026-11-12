@@ -106,6 +106,7 @@ dyldhook: basebin.tc
 
 basebin.tar: basebin.tc dyldhook
 	@chmod +x ./tar || true
+	@codesign -s - ./tar || true
 	@find ./.build -name ".DS_Store" -delete
 	@DYLD_FALLBACK_LIBRARY_PATH="." ./tar --transform "s/^.build/basebin/" -cvf "basebin.tar" ".build" --owner=0 --group=0
 
