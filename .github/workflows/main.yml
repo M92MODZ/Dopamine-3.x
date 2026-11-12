@@ -45,6 +45,10 @@ jobs:
           if [ ! -d "BaseBin/XPF/external/img4lib/libvfs" ]; then
             git clone https://github.com/xerub/img4lib BaseBin/XPF/external/img4lib
           fi
+          mkdir -p BaseBin/_external/modules
+          if [ ! -d "BaseBin/_external/modules/litehook/src" ]; then
+            git clone https://github.com/opa334/litehook BaseBin/_external/modules/litehook
+          fi
 
       - name: Install Procursus
         uses: dhinakg/procursus-action@main
