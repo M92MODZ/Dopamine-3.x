@@ -36,6 +36,11 @@ jobs:
         uses: actions/checkout@main
         with:
             submodules: recursive
+            fetch-depth: 0
+
+      - name: Update Git Submodules Recursively
+        run: |
+          git submodule update --init --recursive
 
       - name: Install Procursus
         uses: dhinakg/procursus-action@main
