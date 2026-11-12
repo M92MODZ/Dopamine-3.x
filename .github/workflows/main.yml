@@ -40,7 +40,11 @@ jobs:
 
       - name: Update Git Submodules Recursively
         run: |
-          git submodule update --init --recursive
+          git submodule update --init --recursive || true
+          mkdir -p BaseBin/XPF/external
+          if [ ! -d "BaseBin/XPF/external/img4lib/libvfs" ]; then
+            git clone https://github.com/xerub/img4lib BaseBin/XPF/external/img4lib
+          fi
 
       - name: Install Procursus
         uses: dhinakg/procursus-action@main
