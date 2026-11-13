@@ -474,6 +474,9 @@ void jbinfo_initialize_hardcoded_offsets(void)
 
 											// iOS 18+
 											if (strcmp(darwinVersion, "24.0.0") >= 0) {
+												// socket
+												gSystemInfo.kernelStruct.socket.usecount = 0x254;
+
 												if (hasSPTM) {
 													gSystemInfo.kernelStruct.pmap.txm_address_space = 0xA8;
 													gSystemInfo.kernelStruct.pmap.asid              = 0x88;
