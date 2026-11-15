@@ -474,9 +474,6 @@ void jbinfo_initialize_hardcoded_offsets(void)
 
 											// iOS 18+
 											if (strcmp(darwinVersion, "24.0.0") >= 0) {
-												// socket
-												gSystemInfo.kernelStruct.socket.usecount = 0x254;
-
 												if (hasSPTM) {
 													gSystemInfo.kernelStruct.pmap.txm_address_space = 0xA8;
 													gSystemInfo.kernelStruct.pmap.asid              = 0x88;
@@ -535,13 +532,13 @@ void jbinfo_initialize_hardcoded_offsets(void)
 														// pid_t p_orig_ppid;
 														// int p_orig_ppidversion;
 														// ^ Was added right before csflags, so everything after it shifted by 0x8
-														gSystemInfo.kernelStruct.proc_ro.csflags               = 0x24;
-														gSystemInfo.kernelStruct.proc_ro.ucred                 = 0x28;
-														gSystemInfo.kernelStruct.proc_ro.syscall_filter_mask   = 0x30;
-														gSystemInfo.kernelStruct.proc_ro.mach_trap_filter_mask = 0x70;
-														gSystemInfo.kernelStruct.proc_ro.mach_kobj_filter_mask = 0x78;
-														gSystemInfo.kernelStruct.proc_ro.t_flags_ro            = 0x80;
-														gSystemInfo.kernelStruct.proc_ro.task_tokens           = 0x48;
+														gSystemInfo.kernelStruct.proc_ro.csflags               += 0x8;
+														gSystemInfo.kernelStruct.proc_ro.ucred                 += 0x8;
+														gSystemInfo.kernelStruct.proc_ro.syscall_filter_mask   += 0x8;
+														gSystemInfo.kernelStruct.proc_ro.mach_trap_filter_mask += 0x8;
+														gSystemInfo.kernelStruct.proc_ro.mach_kobj_filter_mask += 0x8;
+														gSystemInfo.kernelStruct.proc_ro.t_flags_ro            += 0x8;
+														gSystemInfo.kernelStruct.proc_ro.task_tokens           += 0x8;
 
 														// iOS 26.0+
 														if (strcmp(darwinVersion, "25.0.0") >= 0) {

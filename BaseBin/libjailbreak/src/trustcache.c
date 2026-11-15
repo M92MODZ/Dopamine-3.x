@@ -80,7 +80,7 @@ int trustcache_list_insert(uint64_t tcToInsert)
 	else {
 		uint64_t previousStartTC = _trustcache_list_get_start();
 		kwrite64(tcToInsert + koffsetof(trustcache, nextptr), previousStartTC);
-		if (previousStartTC != 0 && koffsetof(trustcache, prevptr)) {
+		if (koffsetof(trustcache, prevptr)) {
 			kwrite64(previousStartTC + koffsetof(trustcache, prevptr), tcToInsert);
 		}
 		_trustcache_list_set_start(tcToInsert);
